@@ -1,5 +1,6 @@
 <%- include('../includes/header.ejs')%>
     <link rel="stylesheet" href="/css/agenda-styles.css" />
+    <link rel="stylesheet" href="/css/nota-styles.css" />
   </head>
   <body>
     <div class="left-position">
@@ -27,11 +28,18 @@
       </div>
       <main class="main-content">
         <div class="title">
-          <h2>Bienvenido</h2>
-          <div><a class="nav-a" href="/">Agendapp</a></div>
+            <h2>Bienvenido</h2>
+            <div><a class="nav-a" href="/">Agendapp</a></div>
         </div>
-        
-        <!-- <div><a class="nav-a" href="/">Signout</a></div> -->
+        <form>
+            <label for="titulo">Título:</label>
+            <input type="text" id="titulo" name="titulo" placeholder="Ingrese el título de la nota">
+    
+            <label for="contenido">Contenido:</label>
+            <textarea id="contenido" name="contenido" rows="10" placeholder="Ingrese el contenido de la nota"></textarea>
+    
+            <input type="submit" value="Guardar">
+        </form>
       </main>
     </div>
   </body>
