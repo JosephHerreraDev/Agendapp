@@ -35,14 +35,14 @@
         <% if(recordatorios.length > 0) { %>
         <div class="grid">
             <% for(let recordatorio of recordatorios) { %>
-                <article class="card producto-item">
-                <header class="card__header">
-                <h3 class="producto_titulo">
+                <article>
+                <header>
+                <h3>
                 <%= recordatorio.titulo %>
                 </h3>
                 </header>
-                <div class="card__content">
-                <p class="producto__descripcion"><%= recordatorio.descripcion %></p>
+                <div>
+                <p><%= recordatorio.descripcion %></p>
                 </div> 
                 </article>
                 <% } %>
