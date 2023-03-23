@@ -9,6 +9,7 @@ app.set('view engine', 'ejs');
 app.set('views', 'views');
 
 const controladorError = require('./controllers/error');
+const bd = require('./util/database');
 const credentialsRoutes = require('./routes/credentials');
 const AgendaRoutes = require('./routes/agenda');
 
