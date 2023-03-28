@@ -36,3 +36,17 @@ exports.getevento = (req, res, next) => {
     ruta: "/evento",
   });
 };
+
+exports.getTarea = (req, res, next) => {
+  res.render("agenda/tarea", {
+    tituloPagina: "Tarea",
+    ruta: "/tarea",
+  });
+};
+
+exports.getReloj = (req, res, next) => {
+  res.render("agenda/reloj", {
+    tituloPagina: "Pomodoro",
+    ruta: "/reloj",
+  });
+};
