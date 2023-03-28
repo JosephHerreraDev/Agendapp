@@ -1,0 +1,38 @@
+<%- include('../includes/header.ejs')%>
+    <link rel="stylesheet" href="/css/agenda-styles.css" />
+  </head>
+  <body>
+    <div class="left-position">
+      <div class="sidebar">
+        <%- include('../includes/navigation.ejs')%>
+      </div>
+      <main class="main-content">
+        <div class="title">
+          <h2>Bienvenido</h2>
+          <div><a class="nav-a" href="/">Agendapp</a></div>
+        </div>
+        <div class="content">
+          <div class="event">
+            <div class="event-title">
+              <h3><%= titulo %></h3>
+            </div>
+            <div class="event-description">
+              <p><%= descripcion %></p>
+            </div>
+            <div class="event-date">
+              <p><%= fecha %></p>
+            </div>
+            <div class="event-time">
+              <p><%= hora %></p>
+            </div>
+            <div class="event-location">
+              <p><%= lugar %></p>
+            </div>
+            <div class="event-attendees">
+              <p><%= asistentes %></p>
+            </div>
+          </div>
+      </main>
+    </div>
+  </body>
+</html>

@@ -1,11 +1,11 @@
 const Recordatorio = require("../models/recordatorios");
 
 exports.getAgenda = (req, res, next) => {
-    res.render("agenda/main", {
-      tituloPagina: "Agenda",
-      ruta: "/main",
-    });
-  };
+  res.render("agenda/main", {
+    tituloPagina: "Agenda",
+    ruta: "/main",
+  });
+};
 
 exports.getNota = (req, res, next) => {
   res.render("agenda/nota", {
@@ -21,5 +21,18 @@ exports.getRecordatorio = (req, res, next) => {
       ruta: "/recordatorio",
       recordatorios: recordatorios,
     });
+  });
+};
+
+exports.getevento = (req, res, next) => {
+  res.render("agenda/evento", {
+    tituloPagina: "Evento",
+    titulo: "Evento",
+    descripcion: "Descripcion",
+    fecha: "Fecha",
+    hora: "Hora",
+    lugar: "Lugar",
+    asistentes: "Asistentes",
+    ruta: "/evento",
   });
 };
