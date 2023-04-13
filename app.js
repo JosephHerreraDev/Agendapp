@@ -13,6 +13,14 @@ const bd = require("./util/basedatos");
 const credentialsRoutes = require("./routes/credentials");
 const AgendaRoutes = require("./routes/agenda");
 
+bd.execute("SELECT * FROM Eventos")
+  .then((result) => {
+    console.log(result[0]);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
