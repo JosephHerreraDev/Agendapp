@@ -2,6 +2,9 @@ const Recordatorio = require("../models/recordatorios");
 const Agenda = require("../models/agenda");
 
 exports.getAgenda = (req, res, next) => {
+  if (!req.session.isLoggedIn) {
+    return res.redirect("/login");
+  }
   Agenda.mostrarTodo().then(([rows, fieldData]) => {
     const eventos = rows.map((evento) => ({
       titulo: evento.titulo,
