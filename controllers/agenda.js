@@ -28,6 +28,17 @@ exports.getNota = (req, res, next) => {
   });
 };
 
+exports.postNota = (req, res, next) => {
+  const idusuario = 1;
+  const titulo = req.body.titulo;
+  const contenido = req.body.contenido;
+
+  Agenda.insertarNota(idusuario, titulo, contenido).then(() => {
+    console.log("Nota creada");
+    res.redirect("/nota");
+  });
+};
+
 exports.getRecordatorio = (req, res, next) => {
   Recordatorio.mostrarTodo((recordatorios) => {
     res.render("agenda/recordatorio", {

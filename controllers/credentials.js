@@ -23,7 +23,7 @@ exports.getLogin = (req, res, next) => {
 exports.postLogin = (req, res) => {
   Credential.mostrarTodo().then(([rows, fieldData]) => {
     const sesiones = rows.map((sesion) => ({
-      id: sesion.id,
+      id: sesion.idUsuario,
       usuario: sesion.correo,
       contra: sesion.contra,
     }));
@@ -37,7 +37,9 @@ exports.postLogin = (req, res) => {
       if (sesion.usuario === username && sesion.contra === password) {
         console.log("Logged in");
         isLoggedIn = true;
-        user = { id: sesion.id, username: username };
+        const idusuario = parseInt(sesion.id);
+        user = { id: idusuario, username: username };
+        console.log(user);
         req.session.isLoggedIn = true;
         req.session.user = user;
       }

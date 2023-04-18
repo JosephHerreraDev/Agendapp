@@ -42,4 +42,10 @@ module.exports = class Agenda {
       [idusuario, titulo, horafecha]
     );
   }
+  static insertarNota(idusuario, titulo, contenido) {
+    return bd.execute(
+      "INSERT INTO Notas (idusuario, titulo, contenido) VALUES (?, ?, ?)",
+      [idusuario, titulo, contenido]
+    );
+  }
 };
