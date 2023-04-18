@@ -48,4 +48,10 @@ module.exports = class Agenda {
       [idusuario, titulo, contenido]
     );
   }
+  static insertarRecordatorio(idusuario, titulo, horafecha, contenido) {
+    return bd.execute(
+      "INSERT INTO Recordatorios (idusuario, titulo, horafecha, contenido) VALUES (?, ?, ?, ?)",
+      [idusuario, titulo, horafecha, contenido]
+    );
+  }
 };

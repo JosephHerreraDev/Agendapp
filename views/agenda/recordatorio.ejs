@@ -12,25 +12,17 @@
             <h2>Bienvenido</h2>
             <div><a class="nav-a" href="/">Agendapp</a></div>
         </div>
-        <h2>Mis Recordatorios</h2>
-        <% if(recordatorios.length > 0) { %>
-        <div class="grid">
-            <% for(let recordatorio of recordatorios) { %>
-                <article>
-                <header>
-                <h3>
-                <%= recordatorio.titulo %>
-                </h3>
-                </header>
-                <div>
-                <p><%= recordatorio.descripcion %></p>
-                </div> 
-                </article>
-                <% } %>
-        </div>
-        <% } else { %>
-            <h3>No tienes pendientes para hoy</h3>
-            <% } %>
+        <form action="/recordatorio" method="POST">
+          <label for="titulo">Título:</label>
+          <input type="text" id="titulo" name="titulo" placeholder="Ingrese el título de la nota">
+          <label for="horafecha">Fecha:</label>
+          <input type="datetime-local" id="horafecha" name="horafecha">
+          <label for="contenido">Contenido:</label>
+          <textarea id="contenido" name="contenido" rows="10" placeholder="Ingrese el contenido de la nota"></textarea>
+          <form action="/nota">
+              <input type="submit" value="Guardar">
+          </form>
+      </form>
       </main>
     </div>
   </body>

@@ -44,12 +44,22 @@ exports.getRecordatorio = (req, res, next) => {
     res.render("agenda/recordatorio", {
       tituloPagina: "Recordatorio",
       ruta: "/recordatorio",
-      titulo: "Recordatorio",
-      horafecha: "Fecha y hora",
-      contenido: "Descripcion",
-      recordatorios: recordatorios,
     });
   });
+};
+
+exports.postRecordatorio = (req, res, next) => {
+  const idusuario = 1;
+  const titulo = req.body.titulo;
+  const horafecha = req.body.horafecha;
+  const contenido = req.body.contenido;
+
+  Agenda.insertarRecordatorio(idusuario, titulo, horafecha, contenido).then(
+    () => {
+      console.log("Recordatorio creado");
+      res.redirect("/recordatorio");
+    }
+  );
 };
 
 exports.getevento = (req, res, next) => {
