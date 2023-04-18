@@ -53,6 +53,27 @@ exports.getevento = (req, res, next) => {
   });
 };
 
+exports.postevento = (req, res, next) => {
+  const idusuario = 1;
+  const titulo = req.body.titulo;
+  const contenido = req.body.contenido;
+  const horafecha = req.body.horafecha;
+  const asistentes = req.body.asistentes;
+  const lugar = req.body.lugar;
+
+  Agenda.insertarEvento(
+    idusuario,
+    titulo,
+    contenido,
+    horafecha,
+    asistentes,
+    lugar
+  ).then(() => {
+    console.log("Evento creado");
+    res.redirect("/evento");
+  });
+};
+
 exports.getTarea = (req, res, next) => {
   res.render("agenda/tarea", {
     tituloPagina: "Tarea",

@@ -11,27 +11,21 @@
           <h2>Bienvenido</h2>
           <div><a class="nav-a" href="/">Agendapp</a></div>
         </div>
-        <div class="content">
-          <div class="event">
-            <div class="event-title">
-              <h3><%= titulo %></h3>
-            </div>
-            <div class="event-description">
-              <p><%= contenido %></p>
-            </div>
-            <div class="event-date">
-              <p><%= horafecha %></p>
-            </div>
-            <div class="event-time">
-              <p><%= asistentes %></p>
-            </div>
-            <div class="event-location">
-              <p><%= lugar %></p>
-            </div>
-            <div class="event-attendees">
-              <p><%= asistentes %></p>
-            </div>
-          </div>
+          <form class="form" action="/evento" method="POST">
+            <label for="titulo">Nombre: </label>
+            <input type="text" id="titulo" name="titulo">
+            <label for="contenido">Contenido: </label>
+            <input type="text" id="contenido" name="contenido">
+            <label for="horafecha">Horario: </label>
+            <input type="datetime-local" id="horafecha" name="horafecha">
+            <label for="asistentes">Asistentes: </label>
+            <input type="text" id="asistentes" name="asistentes">
+            <label for="lugar">Lugar: </label>
+            <input type="text" id="lugar" name="lugar">
+            <form action="/evento">
+                <input class="guardar" type="submit" value="Guardar">
+            </form>
+        </form>
       </main>
     </div>
   </body>

@@ -1,4 +1,5 @@
 const bd = require("../util/basedatos");
+const { insertar } = require("./credentials");
 
 module.exports = class Agenda {
   constructor(titulo, contenido, horafecha, asistentes, lugar) {
@@ -21,7 +22,10 @@ module.exports = class Agenda {
     return bd.execute("SELECT * FROM Eventos");
   }
 
-  static encontrarPorId(id) {
-    return bd.execute("SELECT * FROM Eventos WHERE Eventos.id = ?", [id]);
+  static insertarEvento(idusuario, titulo, contenido, horafecha, asistentes, lugar) {
+    return bd.execute(
+      "INSERT INTO Eventos (idusuario, titulo, contenido, horafecha, asistentes, lugar) VALUES (?, ?, ?, ?, ?, ?)",
+      [idusuario, titulo, contenido, horafecha, asistentes, lugar]
+    );
   }
 };

@@ -8,6 +8,7 @@ router.get("/main", agendaControl.getAgenda);
 router.get("/nota", agendaControl.getNota);
 router.get("/recordatorio", agendaControl.getRecordatorio);
 router.get("/evento", agendaControl.getevento);
+router.post("/evento", agendaControl.postevento);
 router.get("/tarea", agendaControl.getTarea);
 router.get("/reloj", agendaControl.getReloj);
 

@@ -23,6 +23,7 @@ exports.getLogin = (req, res, next) => {
 exports.postLogin = (req, res) => {
   Credential.mostrarTodo().then(([rows, fieldData]) => {
     const sesiones = rows.map((sesion) => ({
+      id: sesion.id,
       usuario: sesion.correo,
       contra: sesion.contra,
     }));
@@ -31,17 +32,21 @@ exports.postLogin = (req, res) => {
     const password = req.body.password;
 
     let isLoggedIn = false;
+    let user = null;
     sesiones.forEach((sesion) => {
       if (sesion.usuario === username && sesion.contra === password) {
+        console.log("Logged in");
         isLoggedIn = true;
+        user = { id: sesion.id, username: username };
         req.session.isLoggedIn = true;
-        req.session.user = { username: username };
+        req.session.user = user;
       }
     });
 
     if (isLoggedIn) {
       return res.redirect("/main");
     } else {
+      console.log("Incorrect username or password");
       res.redirect("/login");
     }
   });
