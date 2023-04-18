@@ -10,6 +10,7 @@ router.get("/recordatorio", agendaControl.getRecordatorio);
 router.get("/evento", agendaControl.getevento);
 router.post("/evento", agendaControl.postevento);
 router.get("/tarea", agendaControl.getTarea);
+router.post("/tarea", agendaControl.postTarea);
 router.get("/reloj", agendaControl.getReloj);
 
 module.exports = router;

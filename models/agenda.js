@@ -22,10 +22,24 @@ module.exports = class Agenda {
     return bd.execute("SELECT * FROM Eventos");
   }
 
-  static insertarEvento(idusuario, titulo, contenido, horafecha, asistentes, lugar) {
+  static insertarEvento(
+    idusuario,
+    titulo,
+    contenido,
+    horafecha,
+    asistentes,
+    lugar
+  ) {
     return bd.execute(
       "INSERT INTO Eventos (idusuario, titulo, contenido, horafecha, asistentes, lugar) VALUES (?, ?, ?, ?, ?, ?)",
       [idusuario, titulo, contenido, horafecha, asistentes, lugar]
+    );
+  }
+
+  static insertarTarea(idusuario, titulo, horafecha) {
+    return bd.execute(
+      "INSERT INTO Tarea (idusuario, titulo, horafecha) VALUES (?, ?, ?)",
+      [idusuario, titulo, horafecha]
     );
   }
 };

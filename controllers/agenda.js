@@ -44,11 +44,6 @@ exports.getRecordatorio = (req, res, next) => {
 exports.getevento = (req, res, next) => {
   res.render("agenda/evento", {
     tituloPagina: "Evento",
-    titulo: "Evento",
-    contenido: "Descripcion",
-    horafecha: "Fecha y hora",
-    asistentes: "Asistentes",
-    lugar: "Lugar",
     ruta: "/evento",
   });
 };
@@ -80,6 +75,17 @@ exports.getTarea = (req, res, next) => {
     titulo: "Tarea",
     horafecha: "Fecha y hora",
     ruta: "/tarea",
+  });
+};
+
+exports.postTarea = (req, res, next) => {
+  const idusuario = 1;
+  const titulo = req.body.titulo;
+  const horafecha = req.body.horafecha;
+
+  Agenda.insertarTarea(idusuario, titulo, horafecha).then(() => {
+    console.log("Tarea creada");
+    res.redirect("/tarea");
   });
 };
 
