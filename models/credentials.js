@@ -16,4 +16,10 @@ module.exports = class Credentials {
   static mostrarTodo() {
     return bd.execute("SELECT * FROM usuario");
   }
+  static insertar(tipo, nombre, correo, contra) {
+    return bd.execute(
+      "INSERT INTO Usuario (tipoUsuario, nombre, correo, contra) VALUES (?, ?, ?, ?)",
+      [tipo, nombre, correo, contra]
+    );
+  }
 };

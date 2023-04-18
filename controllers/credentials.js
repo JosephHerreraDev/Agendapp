@@ -46,3 +46,16 @@ exports.postLogin = (req, res) => {
     }
   });
 };
+
+//crea export de signup
+exports.postSignup = (req, res) => {
+  const username = req.body.username;
+  const email = req.body.email;
+  const password = req.body.password;
+  const type = 2;
+
+  Credential.insertar(type, username, email, password).then(() => {
+    console.log("Usuario creado");
+    res.redirect("/login");
+  });
+};
