@@ -3,13 +3,17 @@ const Agenda = require("../models/agenda");
 
 exports.getAgenda = (req, res, next) => {
   Agenda.mostrarTodo().then(([rows, fieldData]) => {
+    const eventos = rows.map((evento) => ({
+      titulo: evento.titulo,
+      descripcion: evento.descripcion,
+      horafecha: evento.horafecha,
+      asistentes: evento.asistentes,
+      lugar: evento.lugar,
+    }));
     res.render("agenda/main", {
-      //llenar con los datos de la base de datos
-      //campos: ["Titulo", "contenido", "Fecha y hora", "Asistentes", "Lugar"],
-      //datos: rows,
       tituloPagina: "Agenda",
       ruta: "/agenda",
-      
+      eventos: eventos,
     });
   });
 };

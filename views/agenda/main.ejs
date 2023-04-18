@@ -13,7 +13,16 @@
           <h2>Bienvenido</h2>
           <div><a class="nav-a" href="/">Agendapp</a></div>
         </div>
-        <h3><%= titulo %></h3>
+        <!-- Iterar sobre el arreglo de eventos -->
+        <% eventos.forEach((evento) => { %>
+          <!-- Mostrar cada propiedad del evento -->
+          <h3><%= evento.titulo %></h3>
+          <p><%= evento.descripcion %></p>
+          <p><%= evento.horafecha %></p>
+          <p><%= evento.asistentes %></p> 
+          <p><%= evento.lugar %></p>
+        <% }) %>
+
       </main>
     </div>
   </body>

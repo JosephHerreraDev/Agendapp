@@ -1,5 +1,7 @@
 const path = require("path");
 
+const session = require("express-session");
+
 const express = require("express");
 const bodyParser = require("body-parser");
 
@@ -13,13 +15,14 @@ const bd = require("./util/basedatos");
 const credentialsRoutes = require("./routes/credentials");
 const AgendaRoutes = require("./routes/agenda");
 
-bd.execute("SELECT * FROM Eventos")
-  .then((result) => {
-    console.log(result[0]);
+// Configuración de express-session
+app.use(
+  session({
+    secret: "secret",
+    resave: false,
+    saveUninitialized: false,
   })
-  .catch((err) => {
-    console.log(err);
-  });
+);
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
