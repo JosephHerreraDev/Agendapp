@@ -13,14 +13,41 @@
           <h2>Bienvenido</h2>
           <div><a class="nav-a" href="/">Agendapp</a></div>
         </div>
+        <h3>Eventos</h3>
         <!-- Iterar sobre el arreglo de eventos -->
         <% eventos.forEach((evento) => { %>
           <!-- Mostrar cada propiedad del evento -->
-          <h3><%= evento.titulo %></h3>
+          <h4><%= evento.titulo %></h4>
           <p><%= evento.descripcion %></p>
           <p><%= evento.horafecha %></p>
           <p><%= evento.asistentes %></p> 
           <p><%= evento.lugar %></p>
+        <% }) %>
+
+        <h3>Recordatorios</h3>
+        <!-- Iterar sobre el arreglo de recordatorios -->
+        <% recordatorios.forEach((recordatorio) => { %>
+          <!-- Mostrar cada propiedad del recordatorio -->
+          <h4><%= recordatorio.titulo %></h4>
+          <p><%= recordatorio.horafecha %></p>
+          <p><%= recordatorio.contenido %></p>
+
+        <% }) %>
+
+        <h3>Tareas</h3>
+        <!-- Iterar sobre el arreglo de tareas -->
+        <% tareas.forEach((tarea) => { %>
+          <!-- Mostrar cada propiedad de la tarea -->
+          <h4><%= tarea.titulo %></h4>
+          <p><%= tarea.horafecha %></p>
+        <% }) %>
+
+        <h3>Notas</h3>
+        <!-- Iterar sobre el arreglo de notas -->
+        <% notas.forEach((nota) => { %>
+          <!-- Mostrar cada propiedad de la nota -->
+          <h4><%= nota.titulo %></h4>
+          <p><%= nota.contenido %></p>
         <% }) %>
 
       </main>

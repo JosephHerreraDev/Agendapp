@@ -1,24 +1,51 @@
-const Recordatorio = require("../models/recordatorios");
 const Agenda = require("../models/agenda");
 
-exports.getAgenda = (req, res, next) => {
+exports.getAgenda = async (req, res, next) => {
   if (!req.session.isLoggedIn) {
     return res.redirect("/login");
   }
-  Agenda.mostrarTodo().then(([rows, fieldData]) => {
-    const eventos = rows.map((evento) => ({
+
+  try {
+    const [eventos, fieldData1] = await Agenda.mostrarEvento();
+    const eventosFormateados = eventos.map((evento) => ({
       titulo: evento.titulo,
       descripcion: evento.descripcion,
       horafecha: evento.horafecha,
       asistentes: evento.asistentes,
       lugar: evento.lugar,
     }));
+
+    const [recordatorios, fieldData2] = await Agenda.mostrarRecordatorio();
+    const recordatoriosFormateados = recordatorios.map((recordatorio) => ({
+      titulo: recordatorio.titulo,
+      horafecha: recordatorio.horafecha,
+      contenido: recordatorio.contenido,
+    }));
+
+    const [tareas, fieldData3] = await Agenda.mostrarTarea();
+    const tareasFormateadas = tareas.map((tarea) => ({
+      titulo: tarea.titulo,
+      horafecha: tarea.horafecha,
+    }));
+
+    const [notas, fieldData4] = await Agenda.mostrarNota();
+    const notasFormateadas = notas.map((nota) => ({
+      titulo: nota.titulo,
+      contenido: nota.contenido,
+    }));
+
     res.render("agenda/main", {
       tituloPagina: "Agenda",
       ruta: "/agenda",
-      eventos: eventos,
+      eventos: eventosFormateados,
+      recordatorios: recordatoriosFormateados,
+      tareas: tareasFormateadas,
+      notas: notasFormateadas,
     });
-  });
+  } catch (err) {
+    console.log(err);
+    next(err);
+  }
 };
 
 exports.getNota = (req, res, next) => {
@@ -36,15 +63,6 @@ exports.postNota = (req, res, next) => {
   Agenda.insertarNota(idusuario, titulo, contenido).then(() => {
     console.log("Nota creada");
     res.redirect("/nota");
-  });
-};
-
-exports.getRecordatorio = (req, res, next) => {
-  Recordatorio.mostrarTodo((recordatorios) => {
-    res.render("agenda/recordatorio", {
-      tituloPagina: "Recordatorio",
-      ruta: "/recordatorio",
-    });
   });
 };
 

@@ -18,8 +18,20 @@ module.exports = class Agenda {
       ();
   }
 
-  static mostrarTodo() {
+  static mostrarEvento() {
     return bd.execute("SELECT * FROM Eventos");
+  }
+
+  static mostrarRecordatorio() {
+    return bd.execute("SELECT * FROM Recordatorios");
+  }
+
+  static mostrarTarea() {
+    return bd.execute("SELECT * FROM Tarea");
+  }
+
+  static mostrarNota() {
+    return bd.execute("SELECT * FROM Notas");
   }
 
   static insertarEvento(
