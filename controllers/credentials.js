@@ -1,3 +1,4 @@
+const Credential = require("../models/credentials");
 exports.getIndex = (req, res, next) => {
   res.render("credentials/welcome", {
     tituloPagina: "Welcome",
@@ -20,14 +21,28 @@ exports.getLogin = (req, res, next) => {
 };
 
 exports.postLogin = (req, res) => {
-  const username = req.body.username;
-  const password = req.body.password;
+  Credential.mostrarTodo().then(([rows, fieldData]) => {
+    const sesiones = rows.map((sesion) => ({
+      usuario: sesion.correo,
+      contra: sesion.contra,
+    }));
 
-  if (username === "usuario" && password === "contra") {
-    req.session.isLoggedIn = true;
-    req.session.user = { username: username };
-    return res.redirect("/main");
-  }
+    const username = req.body.username;
+    const password = req.body.password;
 
-  res.redirect("/login");
+    let isLoggedIn = false;
+    sesiones.forEach((sesion) => {
+      if (sesion.usuario === username && sesion.contra === password) {
+        isLoggedIn = true;
+        req.session.isLoggedIn = true;
+        req.session.user = { username: username };
+      }
+    });
+
+    if (isLoggedIn) {
+      return res.redirect("/main");
+    } else {
+      res.redirect("/login");
+    }
+  });
 };
