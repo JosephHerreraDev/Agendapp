@@ -66,6 +66,13 @@ exports.postNota = (req, res, next) => {
   });
 };
 
+exports.getRecordatorio = (req, res, next) => {
+  res.render("agenda/recordatorio", {
+    tituloPagina: "Recordatorio",
+    ruta: "/recordatorio",
+  });
+};
+
 exports.postRecordatorio = (req, res, next) => {
   const idusuario = 1;
   const titulo = req.body.titulo;

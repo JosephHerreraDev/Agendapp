@@ -1,4 +1,5 @@
 const Credential = require("../models/credentials");
+
 exports.getIndex = (req, res, next) => {
   res.render("credentials/welcome", {
     tituloPagina: "Welcome",

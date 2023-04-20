@@ -41,12 +41,8 @@ horafecha datetime not null,
 foreign key (idUsuario) references Usuario(idUsuario) on delete cascade);
 
 INSERT INTO Usuario (tipoUsuario, nombre, correo, contra)
-VALUES ("1", "Joseph", "joe@gmail.com", "123");
+VALUES ("1", "Joseph", "joe@gmail.com", "1");
 
 INSERT INTO Eventos (idusuario, titulo, contenido, horafecha, asistentes, lugar)
 VALUES (1, 'Concierto de Rock', 'Un concierto de rock con bandas locales', '2023-05-15', 200, 'Estadio Municipal');
-
-
-
-
 
